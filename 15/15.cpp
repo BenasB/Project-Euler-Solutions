@@ -10,38 +10,25 @@ typedef queue<pii> qii;
 
 long long lattice(int n)
 {
-    long long c = 0;
-    qii q;
-    pii s(0,0);
-    pii g(n,n);
+    long long grid[n+1][n+1];
 
-    q.push(s);
-    while(q.size() != 0)
+    for (int i = 0; i <= n; i++)
     {
-        pii f = q.front();
-        q.pop();
-
-        if (f == g)
+        for (int j = 0; j <= n; j++)
         {
-            c++;
-            continue;
-        }
-
-        if (f.first+1 <= n)
-        {
-            pii t = f;
-            t.first++;
-            q.push(t);
-        }
-        if (f.second+1 <= n)
-        {
-            pii t = f;
-            t.second++;
-            q.push(t);
+            grid[i][j] = 1;
         }
     }
 
-    return c;
+    for (int i = n-1; i >= 0; i--)
+    {
+        for(int j = n-1; j >= 0; j--)
+        {
+            grid[i][j] = grid[i+1][j] + grid[i][j+1];
+        }
+    }
+
+    return grid[0][0];
 }
 
 int main()
