@@ -6,8 +6,6 @@ using namespace std;
 typedef pair<int, int> pii;
 typedef queue<pii> qii;
 
-// NOT FAST ENOUGH
-
 long long lattice(int n)
 {
     long long grid[n+1][n+1];
